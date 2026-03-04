@@ -652,7 +652,8 @@ def relight_scene(tensoIR, dataset, envir_light, out_dir,
                 direct = visibility * light_rgb
                 contrib = surface_brdf * direct * cosine[:, :, None] / light_pdf
                 surface_rgb = contrib.mean(dim=1)
-                surface_rgb = torch.clamp(surface_rgb, 0.0, 1.0)
+                surface_rgb = torch.clamp(surface_rgb, min=0.0)
+                surface_rgb = surface_rgb / (1.0 + surface_rgb)  # Reinhard tone mapping
                 if surface_rgb.shape[0] > 0:
                     surface_rgb = linear2srgb_torch(surface_rgb)
                 relight_rgb[acc_mask] = surface_rgb
@@ -664,7 +665,8 @@ def relight_scene(tensoIR, dataset, envir_light, out_dir,
         acc_full = torch.cat(acc_map, 0)
 
         bg_color = envir_light.get_light(frame_rays[:, 3:])
-        bg_color = torch.clamp(bg_color, 0.0, 1.0)
+        bg_color = torch.clamp(bg_color, min=0.0)
+        bg_color = bg_color / (1.0 + bg_color)  # Reinhard tone mapping
         bg_color = linear2srgb_torch(bg_color).cpu().reshape(H, W, 3).numpy()
 
         acc_np = acc_full.reshape(H, W, 1).numpy()
