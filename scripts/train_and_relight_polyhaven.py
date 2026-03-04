@@ -213,11 +213,110 @@ class SimpleEnvLight:
 
 
 # ---------------------------------------------------------------------------
+# Albedo rescale (using GT albedo)
+# ---------------------------------------------------------------------------
+
+@torch.no_grad()
+def compute_albedo_rescale(tensoIR, train_dataset, data_root, scene_name,
+                           sampled_num=20):
+    """Compute per-channel albedo rescale by comparing predicted albedo to GT.
+
+    GT albedo lives at ``{data_root}/albedos/{prefix}/`` where *prefix* is
+    *scene_name* with the ``_env_N`` suffix stripped (albedo is
+    lighting-independent so it is shared across env variants).
+
+    Returns a [3] tensor: ``rescale = median(gt_albedo / pred_albedo)``
+    per channel, computed over foreground pixels of *sampled_num* views.
+    """
+    import re
+    base = re.sub(r'_env_\d+$', '', scene_name)
+    albedos_root = os.path.join(data_root, 'albedos')
+    albedo_dir = os.path.join(albedos_root, base)
+
+    if not os.path.isdir(albedo_dir) and os.path.isdir(albedos_root):
+        candidates = [d for d in os.listdir(albedos_root)
+                      if base.startswith(d)
+                      and os.path.isdir(os.path.join(albedos_root, d))]
+        candidates.sort(key=len, reverse=True)  # longest prefix first
+        if candidates:
+            albedo_dir = os.path.join(albedos_root, candidates[0])
+            print(f'[compute_albedo_rescale] Matched albedo dir via prefix: {candidates[0]}')
+
+    assert os.path.isdir(albedo_dir), \
+        f'GT albedo dir not found for scene "{scene_name}" (tried {albedo_dir}). ' \
+        f'Expected at {{data_root}}/albedos/{{prefix}}/'
+
+    W, H = train_dataset.img_wh
+    n_pixels = W * H
+    n_views = len(train_dataset.all_rays) // n_pixels
+
+    interval = max(n_views // sampled_num, 1)
+    idx_list = [i * interval for i in range(min(sampled_num, n_views))]
+
+    gt_albedo_all, pred_albedo_all = [], []
+
+    for view_idx in tqdm(idx_list, desc='compute albedo rescale'):
+        albedo_path = os.path.join(albedo_dir, f'{view_idx:05d}.png')
+        if not os.path.exists(albedo_path):
+            continue
+
+        gt_img = imageio.imread(albedo_path)
+        gt_img = torch.from_numpy(gt_img / 255.0).float()  # [H, W, C]
+        if gt_img.shape[0] != H or gt_img.shape[1] != W:
+            from PIL import Image as _Image
+            gt_pil = _Image.fromarray((gt_img.numpy() * 255).astype('uint8'))
+            gt_pil = gt_pil.resize((W, H), _Image.Resampling.LANCZOS)
+            gt_img = torch.from_numpy(np.array(gt_pil) / 255.0).float()
+
+        if gt_img.shape[-1] == 4:
+            gt_mask = (gt_img[..., 3] > 0).reshape(-1)
+            gt_albedo = gt_img[..., :3].reshape(-1, 3)
+        else:
+            gt_mask = torch.ones(n_pixels, dtype=torch.bool)
+            gt_albedo = gt_img[..., :3].reshape(-1, 3)
+
+        start = view_idx * n_pixels
+        end = start + n_pixels
+        rays = train_dataset.all_rays[start:end]
+        light_idx = torch.zeros((n_pixels, 1), dtype=torch.int).to(device)
+
+        pred_chunks, acc_chunks = [], []
+        for ci in torch.split(torch.arange(n_pixels), 4096):
+            _, _, _, albedo_c, _, _, acc_c, *_ = tensoIR(
+                rays[ci].to(device), light_idx[ci],
+                is_train=False, white_bg=True, ndc_ray=False, N_samples=-1,
+            )
+            pred_chunks.append(albedo_c.cpu())
+            acc_chunks.append(acc_c.cpu())
+
+        pred_albedo = torch.cat(pred_chunks, 0)
+        acc = torch.cat(acc_chunks, 0)
+        model_mask = (acc > 0.5)
+        combined_mask = gt_mask & model_mask
+
+        if combined_mask.sum() < 100:
+            continue
+
+        gt_albedo_all.append(gt_albedo[combined_mask])
+        pred_albedo_all.append(pred_albedo[combined_mask])
+
+    if not gt_albedo_all:
+        print('[compute_albedo_rescale] Not enough valid pixels, using rescale = 1.0')
+        return torch.ones(3)
+
+    gt_cat = torch.cat(gt_albedo_all, 0)
+    pred_cat = torch.cat(pred_albedo_all, 0)
+    ratio, _ = (gt_cat / pred_cat.clamp(min=1e-6)).median(dim=0)
+    print(f'[compute_albedo_rescale] Per-channel rescale: {ratio}')
+    return ratio
+
+
+# ---------------------------------------------------------------------------
 # Training
 # ---------------------------------------------------------------------------
 
 def train_scene(args, scene_name, data_root):
-    """Train TensoIR on a single scene. Returns (tensoIR, logfolder)."""
+    """Train TensoIR on a single scene. Returns (tensoIR, logfolder, test_dataset, train_dataset)."""
     DatasetClass = dataset_dict[args.dataset_name]
 
     train_dataset = DatasetClass(
@@ -262,42 +361,15 @@ def train_scene(args, scene_name, data_root):
     nSamples = min(args.nSamples, cal_n_samples(reso_cur, args.step_ratio))
 
     ckpt_path = f'{logfolder}/{scene_name}.th'
-    ckpt_to_load = None
-    min_resume_iter = 1000
 
-    if not getattr(args, 'force_retrain', False):
-        if os.path.exists(ckpt_path):
-            ckpt_to_load = ckpt_path
-        else:
-            ckpt_dir = f'{logfolder}/checkpoints'
-            if os.path.isdir(ckpt_dir):
-                import re
-                ckpt_files = []
-                for f in os.listdir(ckpt_dir):
-                    if not f.endswith('.th'):
-                        continue
-                    m = re.search(r'_(\d+)\.th$', f)
-                    if m:
-                        it = int(m.group(1))
-                        if it >= min_resume_iter:
-                            ckpt_files.append((it, f))
-                if ckpt_files:
-                    ckpt_files.sort(key=lambda x: x[0])
-                    best_iter, best_file = ckpt_files[-1]
-                    ckpt_to_load = os.path.join(ckpt_dir, best_file)
-                    print(f'[train_scene] Found intermediate checkpoint at iter {best_iter}')
-
-    if ckpt_to_load is not None:
-        print(f'[train_scene] Loading checkpoint: {ckpt_to_load}')
-        ckpt = torch.load(ckpt_to_load, map_location=device, weights_only=False)
+    if os.path.exists(ckpt_path) and not getattr(args, 'force_retrain', False):
+        print(f'[train_scene] Final checkpoint found: {ckpt_path}, skipping training.')
+        ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
         kwargs = ckpt['kwargs']
         kwargs.update({'device': device})
         tensoIR = eval(args.model_name)(**kwargs)
         tensoIR.load(ckpt)
-        if ckpt_to_load != ckpt_path:
-            tensoIR.save(ckpt_path)
-            print(f'[train_scene] Promoted intermediate checkpoint → {ckpt_path}')
-        return tensoIR, logfolder, test_dataset
+        return tensoIR, logfolder, test_dataset, train_dataset
 
     tensoIR = eval(args.model_name)(
         aabb, reso_cur, device,
@@ -482,7 +554,7 @@ def train_scene(args, scene_name, data_root):
 
     tensoIR.save(ckpt_path)
     print(f'[train_scene] Saved checkpoint to {ckpt_path}')
-    return tensoIR, logfolder, test_dataset
+    return tensoIR, logfolder, test_dataset, train_dataset
 
 
 # ---------------------------------------------------------------------------
@@ -492,8 +564,14 @@ def train_scene(args, scene_name, data_root):
 @torch.no_grad()
 def relight_scene(tensoIR, dataset, envir_light, out_dir,
                   target_indices=None, acc_thre=0.5,
-                  vis_equation='nerv', batch_size=4096):
-    """Relight *dataset* views under *envir_light* and save to *out_dir*."""
+                  vis_equation='nerv', batch_size=4096,
+                  rescale_value=None):
+    """Relight *dataset* views under *envir_light* and save to *out_dir*.
+
+    Args:
+        rescale_value: per-channel albedo correction [3] from
+            ``compute_albedo_rescale``.  ``None`` means no rescale (1.0).
+    """
     W, H = dataset.img_wh
     os.makedirs(out_dir, exist_ok=True)
 
@@ -529,6 +607,8 @@ def relight_scene(tensoIR, dataset, envir_light, out_dir,
                 masked_pts = surface_xyz[acc_mask]
                 masked_normal = normal_chunk[acc_mask]
                 masked_albedo = albedo_chunk[acc_mask]
+                if rescale_value is not None:
+                    masked_albedo = masked_albedo * rescale_value.to(masked_albedo.device)
                 masked_roughness = roughness_chunk[acc_mask]
                 masked_fresnel = fresnel_chunk[acc_mask]
 
@@ -644,10 +724,15 @@ def main():
         # --- Train ---
         if scene_name not in trained_scenes and not batch_args.relight_only:
             print(f'\n>>> Training scene: {scene_name}')
-            tensoIR, logfolder, test_dataset = train_scene(args, scene_name, batch_args.data_root)
-            trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset)
+            tensoIR, logfolder, test_dataset, train_dataset = train_scene(args, scene_name, batch_args.data_root)
+
+            print(f'\n>>> Computing albedo rescale for {scene_name}')
+            rescale_value = compute_albedo_rescale(
+                tensoIR, train_dataset, batch_args.data_root, scene_name)
+            trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset, rescale_value)
+            del train_dataset  # free memory
         elif scene_name in trained_scenes:
-            tensoIR, logfolder, test_dataset = trained_scenes[scene_name]
+            tensoIR, logfolder, test_dataset, rescale_value = trained_scenes[scene_name]
         else:
             ckpt_path = f'{args.basedir}/{scene_name}/{scene_name}.th'
             if not os.path.exists(ckpt_path):
@@ -661,6 +746,12 @@ def main():
             tensoIR.load(ckpt)
 
             DatasetClass = dataset_dict[args.dataset_name]
+            train_dataset = DatasetClass(
+                batch_args.data_root,
+                split='train',
+                downsample=args.downsample_train,
+                scene_name=scene_name,
+            )
             test_dataset = DatasetClass(
                 batch_args.data_root,
                 split='test',
@@ -668,7 +759,12 @@ def main():
                 scene_name=scene_name,
             )
             logfolder = f'{args.basedir}/{scene_name}'
-            trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset)
+
+            print(f'\n>>> Computing albedo rescale for {scene_name}')
+            rescale_value = compute_albedo_rescale(
+                tensoIR, train_dataset, batch_args.data_root, scene_name)
+            trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset, rescale_value)
+            del train_dataset
 
         # --- Relight ---
         envmap_dir = Path(batch_args.data_root) / 'envmaps' / relit_scene_name
@@ -687,6 +783,7 @@ def main():
             acc_thre=batch_args.acc_thre,
             vis_equation=batch_args.vis_equation,
             batch_size=batch_args.relight_batch_size,
+            rescale_value=rescale_value,
         )
 
     print('\n' + '=' * 60)

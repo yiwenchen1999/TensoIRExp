@@ -14,4 +14,4 @@ python scripts/train_and_relight_polyhaven.py \
     --relight_meta_dir /tmp/test_meta \
     --output_dir ./output/polyhaven_relight_test \
     --vis_every 5000 \
-    --n_iters 30000
+    --n_iters 80000
