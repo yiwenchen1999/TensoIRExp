@@ -1,0 +1,16 @@
+{
+  "scene_name": "machete_env_1",
+  "context_view_indices": [
+    2,
+    6,
+    47,
+    66
+  ],
+  "target_view_indices": [
+    2,
+    6,
+    47,
+    66
+  ],
+  "relit_scene_name": "machete_env_2"
+}

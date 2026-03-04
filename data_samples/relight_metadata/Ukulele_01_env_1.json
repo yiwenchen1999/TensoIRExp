@@ -1,0 +1,16 @@
+{
+  "scene_name": "Ukulele_01_env_1",
+  "context_view_indices": [
+    62,
+    70,
+    75,
+    93
+  ],
+  "target_view_indices": [
+    62,
+    70,
+    75,
+    93
+  ],
+  "relit_scene_name": "Ukulele_01_env_0"
+}

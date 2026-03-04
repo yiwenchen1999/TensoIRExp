@@ -1,0 +1,16 @@
+{
+  "scene_name": "wheelchair_01_white_env_0",
+  "context_view_indices": [
+    8,
+    39,
+    40,
+    94
+  ],
+  "target_view_indices": [
+    8,
+    39,
+    40,
+    94
+  ],
+  "relit_scene_name": "wheelchair_01_env_1"
+}

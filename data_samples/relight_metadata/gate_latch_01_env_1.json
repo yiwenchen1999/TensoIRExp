@@ -1,0 +1,16 @@
+{
+  "scene_name": "gate_latch_01_env_1",
+  "context_view_indices": [
+    72,
+    80,
+    81,
+    87
+  ],
+  "target_view_indices": [
+    72,
+    80,
+    81,
+    87
+  ],
+  "relit_scene_name": "gate_latch_01_white_env_0"
+}

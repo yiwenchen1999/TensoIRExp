@@ -1,0 +1,16 @@
+{
+  "scene_name": "watering_can_metal_01_white_env_0",
+  "context_view_indices": [
+    12,
+    18,
+    26,
+    50
+  ],
+  "target_view_indices": [
+    12,
+    18,
+    26,
+    50
+  ],
+  "relit_scene_name": "watering_can_metal_01_env_2"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "bleach_bottle_env_1",
+  "context_view_indices": [
+    40,
+    51,
+    75,
+    78
+  ],
+  "target_view_indices": [
+    40,
+    51,
+    75,
+    78
+  ],
+  "relit_scene_name": "bleach_bottle_env_2"
+}

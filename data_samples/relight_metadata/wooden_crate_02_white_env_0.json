@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_crate_02_white_env_0",
+  "context_view_indices": [
+    64,
+    75,
+    91,
+    95
+  ],
+  "target_view_indices": [
+    64,
+    75,
+    91,
+    95
+  ],
+  "relit_scene_name": "wooden_crate_02_env_0"
+}

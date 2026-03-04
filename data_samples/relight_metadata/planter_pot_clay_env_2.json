@@ -1,0 +1,16 @@
+{
+  "scene_name": "planter_pot_clay_env_2",
+  "context_view_indices": [
+    37,
+    46,
+    61,
+    76
+  ],
+  "target_view_indices": [
+    37,
+    46,
+    61,
+    76
+  ],
+  "relit_scene_name": "planter_pot_clay_white_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "wine_barrel_01_env_1",
+  "context_view_indices": [
+    3,
+    40,
+    41,
+    63
+  ],
+  "target_view_indices": [
+    3,
+    40,
+    41,
+    63
+  ],
+  "relit_scene_name": "wine_barrel_01_env_2"
+}

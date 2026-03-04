@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_spoon_env_1",
+  "context_view_indices": [
+    40,
+    45,
+    70,
+    77
+  ],
+  "target_view_indices": [
+    40,
+    45,
+    70,
+    77
+  ],
+  "relit_scene_name": "wooden_spoon_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "GothicCommode_01_env_1",
+  "context_view_indices": [
+    36,
+    48,
+    49,
+    60
+  ],
+  "target_view_indices": [
+    36,
+    48,
+    49,
+    60
+  ],
+  "relit_scene_name": "GothicCommode_01_env_0"
+}

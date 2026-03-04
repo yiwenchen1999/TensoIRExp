@@ -1,0 +1,16 @@
+{
+  "scene_name": "mousetrap_white_env_0",
+  "context_view_indices": [
+    37,
+    53,
+    59,
+    98
+  ],
+  "target_view_indices": [
+    37,
+    53,
+    59,
+    98
+  ],
+  "relit_scene_name": "mousetrap_env_1"
+}

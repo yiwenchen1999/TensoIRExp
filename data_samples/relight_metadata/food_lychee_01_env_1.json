@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_lychee_01_env_1",
+  "context_view_indices": [
+    8,
+    40,
+    85,
+    95
+  ],
+  "target_view_indices": [
+    8,
+    40,
+    85,
+    95
+  ],
+  "relit_scene_name": "food_lychee_01_env_0"
+}

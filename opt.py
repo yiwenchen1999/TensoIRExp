@@ -36,8 +36,11 @@ def config_parser(cmd=None):
     parser.add_argument('--dataset_name', type=str, default='tensoIR_unknown_rotated_lights',
                         choices=['blender', 'llff', 'nsvf', 'dtu','tankstemple', 'own_data', 
                         'tensorf_init', 'shapeBuffer', 'tensoIR_unknown_rotated_lights', 'tensoIR_unknown_general_multi_lights',
-                        'tensoIR_simple', 'tensoIR_relighting_test', 'tensoIR_material_editing_test', 'tensoIR_simple_dtu'])
+                        'tensoIR_simple', 'tensoIR_relighting_test', 'tensoIR_material_editing_test', 'tensoIR_simple_dtu',
+                        'polyhaven_lvsm'])
 
+    parser.add_argument("--scene_name", type=str, default=None, help="scene name for polyhaven_lvsm dataset")
+    parser.add_argument("--hdr_dir", type=str, default=None, help="directory containing HDR/EXR environment maps for relighting")
 
     # training options
     # learning rate

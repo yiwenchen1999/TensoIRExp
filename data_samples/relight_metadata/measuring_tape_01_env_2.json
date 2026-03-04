@@ -1,0 +1,16 @@
+{
+  "scene_name": "measuring_tape_01_env_2",
+  "context_view_indices": [
+    42,
+    52,
+    70,
+    86
+  ],
+  "target_view_indices": [
+    42,
+    52,
+    70,
+    86
+  ],
+  "relit_scene_name": "measuring_tape_01_env_1"
+}

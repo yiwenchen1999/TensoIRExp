@@ -1,0 +1,16 @@
+{
+  "scene_name": "jug_01_env_0",
+  "context_view_indices": [
+    75,
+    83,
+    87,
+    88
+  ],
+  "target_view_indices": [
+    75,
+    83,
+    87,
+    88
+  ],
+  "relit_scene_name": "jug_01_env_1"
+}

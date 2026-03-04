@@ -1,0 +1,16 @@
+{
+  "scene_name": "croissant_env_2",
+  "context_view_indices": [
+    17,
+    19,
+    29,
+    45
+  ],
+  "target_view_indices": [
+    17,
+    19,
+    29,
+    45
+  ],
+  "relit_scene_name": "croissant_env_0"
+}

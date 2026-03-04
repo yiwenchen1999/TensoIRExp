@@ -1,0 +1,16 @@
+{
+  "scene_name": "standing_chalkboard_01_env_1",
+  "context_view_indices": [
+    28,
+    54,
+    61,
+    64
+  ],
+  "target_view_indices": [
+    28,
+    54,
+    61,
+    64
+  ],
+  "relit_scene_name": "standing_chalkboard_01_env_2"
+}

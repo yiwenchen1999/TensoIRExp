@@ -1,0 +1,16 @@
+{
+  "scene_name": "brass_pot_02_env_0",
+  "context_view_indices": [
+    34,
+    37,
+    58,
+    65
+  ],
+  "target_view_indices": [
+    34,
+    37,
+    58,
+    65
+  ],
+  "relit_scene_name": "brass_pot_02_white_env_0"
+}

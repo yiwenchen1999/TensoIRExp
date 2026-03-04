@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_pears_asian_01_env_2",
+  "context_view_indices": [
+    2,
+    22,
+    41,
+    44
+  ],
+  "target_view_indices": [
+    2,
+    22,
+    41,
+    44
+  ],
+  "relit_scene_name": "food_pears_asian_01_white_env_0"
+}

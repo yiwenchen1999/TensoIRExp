@@ -1,0 +1,16 @@
+{
+  "scene_name": "sledgehammer_01_env_1",
+  "context_view_indices": [
+    34,
+    74,
+    83,
+    91
+  ],
+  "target_view_indices": [
+    34,
+    74,
+    83,
+    91
+  ],
+  "relit_scene_name": "sledgehammer_01_white_env_0"
+}

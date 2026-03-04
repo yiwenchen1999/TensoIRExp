@@ -1,0 +1,16 @@
+{
+  "scene_name": "utility_box_01_env_1",
+  "context_view_indices": [
+    4,
+    26,
+    82,
+    94
+  ],
+  "target_view_indices": [
+    4,
+    26,
+    82,
+    94
+  ],
+  "relit_scene_name": "utility_box_01_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "mantel_clock_01_env_2",
+  "context_view_indices": [
+    27,
+    29,
+    53,
+    69
+  ],
+  "target_view_indices": [
+    27,
+    29,
+    53,
+    69
+  ],
+  "relit_scene_name": "mantel_clock_01_env_0"
+}

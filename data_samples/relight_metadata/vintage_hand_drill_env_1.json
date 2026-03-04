@@ -1,0 +1,16 @@
+{
+  "scene_name": "vintage_hand_drill_env_1",
+  "context_view_indices": [
+    71,
+    72,
+    77,
+    81
+  ],
+  "target_view_indices": [
+    71,
+    72,
+    77,
+    81
+  ],
+  "relit_scene_name": "vintage_hand_drill_env_2"
+}

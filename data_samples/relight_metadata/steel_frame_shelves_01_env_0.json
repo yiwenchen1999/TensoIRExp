@@ -1,0 +1,16 @@
+{
+  "scene_name": "steel_frame_shelves_01_env_0",
+  "context_view_indices": [
+    14,
+    46,
+    66,
+    79
+  ],
+  "target_view_indices": [
+    14,
+    46,
+    66,
+    79
+  ],
+  "relit_scene_name": "steel_frame_shelves_01_env_1"
+}

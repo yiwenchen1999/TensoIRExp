@@ -1,0 +1,16 @@
+{
+  "scene_name": "spinning_wheel_01_env_0",
+  "context_view_indices": [
+    58,
+    60,
+    71,
+    92
+  ],
+  "target_view_indices": [
+    58,
+    60,
+    71,
+    92
+  ],
+  "relit_scene_name": "spinning_wheel_01_white_env_0"
+}

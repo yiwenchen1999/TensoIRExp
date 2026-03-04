@@ -1,0 +1,16 @@
+{
+  "scene_name": "Rockingchair_01_env_1",
+  "context_view_indices": [
+    66,
+    78,
+    79,
+    86
+  ],
+  "target_view_indices": [
+    66,
+    78,
+    79,
+    86
+  ],
+  "relit_scene_name": "Rockingchair_01_env_2"
+}

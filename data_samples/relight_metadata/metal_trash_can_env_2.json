@@ -1,0 +1,16 @@
+{
+  "scene_name": "metal_trash_can_env_2",
+  "context_view_indices": [
+    22,
+    38,
+    51,
+    99
+  ],
+  "target_view_indices": [
+    22,
+    38,
+    51,
+    99
+  ],
+  "relit_scene_name": "metal_trash_can_env_1"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "trowel_01_env_1",
+  "context_view_indices": [
+    38,
+    43,
+    57,
+    77
+  ],
+  "target_view_indices": [
+    38,
+    43,
+    57,
+    77
+  ],
+  "relit_scene_name": "trowel_01_white_env_0"
+}

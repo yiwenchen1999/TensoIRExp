@@ -1,0 +1,16 @@
+{
+  "scene_name": "ladder_sectioned_01_env_0",
+  "context_view_indices": [
+    74,
+    81,
+    88,
+    89
+  ],
+  "target_view_indices": [
+    74,
+    81,
+    88,
+    89
+  ],
+  "relit_scene_name": "ladder_sectioned_01_env_1"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_display_shelves_01_env_0",
+  "context_view_indices": [
+    47,
+    69,
+    72,
+    73
+  ],
+  "target_view_indices": [
+    47,
+    69,
+    72,
+    73
+  ],
+  "relit_scene_name": "wooden_display_shelves_01_white_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "picke_dirty_01_env_0",
+  "context_view_indices": [
+    13,
+    15,
+    20,
+    21
+  ],
+  "target_view_indices": [
+    13,
+    15,
+    20,
+    21
+  ],
+  "relit_scene_name": "picke_dirty_01_white_env_0"
+}

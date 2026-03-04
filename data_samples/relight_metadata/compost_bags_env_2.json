@@ -1,0 +1,16 @@
+{
+  "scene_name": "compost_bags_env_2",
+  "context_view_indices": [
+    50,
+    52,
+    58,
+    60
+  ],
+  "target_view_indices": [
+    50,
+    52,
+    58,
+    60
+  ],
+  "relit_scene_name": "compost_bags_white_env_0"
+}

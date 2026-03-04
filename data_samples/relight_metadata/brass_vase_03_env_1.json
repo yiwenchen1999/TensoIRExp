@@ -1,0 +1,16 @@
+{
+  "scene_name": "brass_vase_03_env_1",
+  "context_view_indices": [
+    13,
+    32,
+    78,
+    85
+  ],
+  "target_view_indices": [
+    13,
+    32,
+    78,
+    85
+  ],
+  "relit_scene_name": "brass_vase_03_env_0"
+}

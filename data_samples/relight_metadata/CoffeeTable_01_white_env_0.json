@@ -1,0 +1,16 @@
+{
+  "scene_name": "CoffeeTable_01_white_env_0",
+  "context_view_indices": [
+    47,
+    58,
+    69,
+    80
+  ],
+  "target_view_indices": [
+    47,
+    58,
+    69,
+    80
+  ],
+  "relit_scene_name": "CoffeeTable_01_env_0"
+}

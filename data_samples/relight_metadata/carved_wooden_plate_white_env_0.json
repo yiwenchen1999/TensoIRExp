@@ -1,0 +1,16 @@
+{
+  "scene_name": "carved_wooden_plate_white_env_0",
+  "context_view_indices": [
+    20,
+    59,
+    63,
+    66
+  ],
+  "target_view_indices": [
+    20,
+    59,
+    63,
+    66
+  ],
+  "relit_scene_name": "carved_wooden_plate_env_0"
+}

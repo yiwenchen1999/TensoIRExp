@@ -1,0 +1,16 @@
+{
+  "scene_name": "bar_chair_round_01_env_0",
+  "context_view_indices": [
+    50,
+    53,
+    62,
+    78
+  ],
+  "target_view_indices": [
+    50,
+    53,
+    62,
+    78
+  ],
+  "relit_scene_name": "bar_chair_round_01_env_2"
+}

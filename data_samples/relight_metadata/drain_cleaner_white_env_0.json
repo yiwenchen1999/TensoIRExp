@@ -1,0 +1,16 @@
+{
+  "scene_name": "drain_cleaner_white_env_0",
+  "context_view_indices": [
+    39,
+    41,
+    50,
+    54
+  ],
+  "target_view_indices": [
+    39,
+    41,
+    50,
+    54
+  ],
+  "relit_scene_name": "drain_cleaner_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "modern_coffee_table_01_env_1",
+  "context_view_indices": [
+    1,
+    61,
+    68,
+    81
+  ],
+  "target_view_indices": [
+    1,
+    61,
+    68,
+    81
+  ],
+  "relit_scene_name": "modern_coffee_table_01_env_2"
+}

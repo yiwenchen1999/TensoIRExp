@@ -1,0 +1,16 @@
+{
+  "scene_name": "carved_wooden_elephant_white_env_0",
+  "context_view_indices": [
+    19,
+    33,
+    40,
+    45
+  ],
+  "target_view_indices": [
+    19,
+    33,
+    40,
+    45
+  ],
+  "relit_scene_name": "carved_wooden_elephant_env_0"
+}

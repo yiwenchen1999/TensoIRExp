@@ -1,0 +1,16 @@
+{
+  "scene_name": "SchoolDesk_01_env_2",
+  "context_view_indices": [
+    58,
+    59,
+    68,
+    73
+  ],
+  "target_view_indices": [
+    58,
+    59,
+    68,
+    73
+  ],
+  "relit_scene_name": "SchoolDesk_01_env_0"
+}

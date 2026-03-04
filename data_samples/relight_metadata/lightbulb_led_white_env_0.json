@@ -1,0 +1,16 @@
+{
+  "scene_name": "lightbulb_led_white_env_0",
+  "context_view_indices": [
+    35,
+    49,
+    63,
+    68
+  ],
+  "target_view_indices": [
+    35,
+    49,
+    63,
+    68
+  ],
+  "relit_scene_name": "lightbulb_led_env_0"
+}

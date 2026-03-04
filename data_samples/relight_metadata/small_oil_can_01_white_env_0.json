@@ -1,0 +1,16 @@
+{
+  "scene_name": "small_oil_can_01_white_env_0",
+  "context_view_indices": [
+    34,
+    47,
+    57,
+    60
+  ],
+  "target_view_indices": [
+    34,
+    47,
+    57,
+    60
+  ],
+  "relit_scene_name": "small_oil_can_01_env_0"
+}

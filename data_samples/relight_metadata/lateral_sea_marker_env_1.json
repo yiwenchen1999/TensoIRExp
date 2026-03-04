@@ -1,0 +1,16 @@
+{
+  "scene_name": "lateral_sea_marker_env_1",
+  "context_view_indices": [
+    0,
+    71,
+    72,
+    99
+  ],
+  "target_view_indices": [
+    0,
+    71,
+    72,
+    99
+  ],
+  "relit_scene_name": "lateral_sea_marker_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "cardboard_box_01_white_env_0",
+  "context_view_indices": [
+    42,
+    43,
+    81,
+    86
+  ],
+  "target_view_indices": [
+    42,
+    43,
+    81,
+    86
+  ],
+  "relit_scene_name": "cardboard_box_01_env_1"
+}

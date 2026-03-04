@@ -1,0 +1,16 @@
+{
+  "scene_name": "dutch_ship_large_02_env_1",
+  "context_view_indices": [
+    22,
+    46,
+    54,
+    79
+  ],
+  "target_view_indices": [
+    22,
+    46,
+    54,
+    79
+  ],
+  "relit_scene_name": "dutch_ship_large_02_env_0"
+}

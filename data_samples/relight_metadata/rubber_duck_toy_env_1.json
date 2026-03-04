@@ -1,0 +1,16 @@
+{
+  "scene_name": "rubber_duck_toy_env_1",
+  "context_view_indices": [
+    41,
+    47,
+    55,
+    74
+  ],
+  "target_view_indices": [
+    41,
+    47,
+    55,
+    74
+  ],
+  "relit_scene_name": "rubber_duck_toy_env_2"
+}

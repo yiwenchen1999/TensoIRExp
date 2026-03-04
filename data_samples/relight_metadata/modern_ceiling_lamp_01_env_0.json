@@ -1,0 +1,16 @@
+{
+  "scene_name": "modern_ceiling_lamp_01_env_0",
+  "context_view_indices": [
+    45,
+    46,
+    54,
+    55
+  ],
+  "target_view_indices": [
+    45,
+    46,
+    54,
+    55
+  ],
+  "relit_scene_name": "modern_ceiling_lamp_01_white_env_0"
+}

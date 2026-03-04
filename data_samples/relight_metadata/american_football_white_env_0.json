@@ -1,0 +1,16 @@
+{
+  "scene_name": "american_football_white_env_0",
+  "context_view_indices": [
+    43,
+    46,
+    51,
+    53
+  ],
+  "target_view_indices": [
+    43,
+    46,
+    51,
+    53
+  ],
+  "relit_scene_name": "american_football_env_1"
+}

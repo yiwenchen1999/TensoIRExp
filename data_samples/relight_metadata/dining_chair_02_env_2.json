@@ -1,0 +1,16 @@
+{
+  "scene_name": "dining_chair_02_env_2",
+  "context_view_indices": [
+    1,
+    42,
+    74,
+    95
+  ],
+  "target_view_indices": [
+    1,
+    42,
+    74,
+    95
+  ],
+  "relit_scene_name": "dining_chair_02_env_1"
+}

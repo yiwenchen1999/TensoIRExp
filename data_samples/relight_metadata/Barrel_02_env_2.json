@@ -1,0 +1,16 @@
+{
+  "scene_name": "Barrel_02_env_2",
+  "context_view_indices": [
+    4,
+    21,
+    34,
+    62
+  ],
+  "target_view_indices": [
+    4,
+    21,
+    34,
+    62
+  ],
+  "relit_scene_name": "Barrel_02_white_env_0"
+}

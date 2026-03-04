@@ -1,0 +1,16 @@
+{
+  "scene_name": "security_camera_01_env_2",
+  "context_view_indices": [
+    45,
+    54,
+    63,
+    68
+  ],
+  "target_view_indices": [
+    45,
+    54,
+    63,
+    68
+  ],
+  "relit_scene_name": "security_camera_01_white_env_0"
+}

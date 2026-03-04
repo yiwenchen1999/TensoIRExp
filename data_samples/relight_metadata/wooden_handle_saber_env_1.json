@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_handle_saber_env_1",
+  "context_view_indices": [
+    18,
+    22,
+    24,
+    31
+  ],
+  "target_view_indices": [
+    18,
+    22,
+    24,
+    31
+  ],
+  "relit_scene_name": "wooden_handle_saber_white_env_0"
+}

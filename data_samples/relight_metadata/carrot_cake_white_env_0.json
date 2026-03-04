@@ -1,0 +1,16 @@
+{
+  "scene_name": "carrot_cake_white_env_0",
+  "context_view_indices": [
+    26,
+    58,
+    81,
+    82
+  ],
+  "target_view_indices": [
+    26,
+    58,
+    81,
+    82
+  ],
+  "relit_scene_name": "carrot_cake_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "GreenChair_01_env_0",
+  "context_view_indices": [
+    50,
+    61,
+    83,
+    84
+  ],
+  "target_view_indices": [
+    50,
+    61,
+    83,
+    84
+  ],
+  "relit_scene_name": "GreenChair_01_env_2"
+}

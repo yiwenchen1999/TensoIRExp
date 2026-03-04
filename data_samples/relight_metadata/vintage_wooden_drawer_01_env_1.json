@@ -1,0 +1,16 @@
+{
+  "scene_name": "vintage_wooden_drawer_01_env_1",
+  "context_view_indices": [
+    33,
+    44,
+    53,
+    58
+  ],
+  "target_view_indices": [
+    33,
+    44,
+    53,
+    58
+  ],
+  "relit_scene_name": "vintage_wooden_drawer_01_white_env_0"
+}

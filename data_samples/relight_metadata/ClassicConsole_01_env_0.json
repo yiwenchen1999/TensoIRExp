@@ -1,0 +1,16 @@
+{
+  "scene_name": "ClassicConsole_01_env_0",
+  "context_view_indices": [
+    41,
+    60,
+    74,
+    96
+  ],
+  "target_view_indices": [
+    41,
+    60,
+    74,
+    96
+  ],
+  "relit_scene_name": "ClassicConsole_01_env_1"
+}

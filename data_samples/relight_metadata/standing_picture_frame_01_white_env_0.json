@@ -1,0 +1,16 @@
+{
+  "scene_name": "standing_picture_frame_01_white_env_0",
+  "context_view_indices": [
+    38,
+    47,
+    83,
+    87
+  ],
+  "target_view_indices": [
+    38,
+    47,
+    83,
+    87
+  ],
+  "relit_scene_name": "standing_picture_frame_01_env_2"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "metal_tool_chest_env_0",
+  "context_view_indices": [
+    55,
+    57,
+    61,
+    77
+  ],
+  "target_view_indices": [
+    55,
+    57,
+    61,
+    77
+  ],
+  "relit_scene_name": "metal_tool_chest_env_2"
+}

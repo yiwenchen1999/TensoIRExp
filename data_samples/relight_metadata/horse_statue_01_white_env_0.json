@@ -1,0 +1,16 @@
+{
+  "scene_name": "horse_statue_01_white_env_0",
+  "context_view_indices": [
+    31,
+    51,
+    67,
+    73
+  ],
+  "target_view_indices": [
+    31,
+    51,
+    67,
+    73
+  ],
+  "relit_scene_name": "horse_statue_01_env_1"
+}

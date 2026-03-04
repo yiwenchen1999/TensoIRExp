@@ -1,0 +1,16 @@
+{
+  "scene_name": "gamepad_white_env_0",
+  "context_view_indices": [
+    15,
+    16,
+    28,
+    57
+  ],
+  "target_view_indices": [
+    15,
+    16,
+    28,
+    57
+  ],
+  "relit_scene_name": "gamepad_env_2"
+}

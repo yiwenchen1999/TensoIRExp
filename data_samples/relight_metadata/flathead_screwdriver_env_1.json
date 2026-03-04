@@ -1,0 +1,16 @@
+{
+  "scene_name": "flathead_screwdriver_env_1",
+  "context_view_indices": [
+    55,
+    60,
+    63,
+    75
+  ],
+  "target_view_indices": [
+    55,
+    60,
+    63,
+    75
+  ],
+  "relit_scene_name": "flathead_screwdriver_env_0"
+}

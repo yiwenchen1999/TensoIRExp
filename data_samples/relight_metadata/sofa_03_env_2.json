@@ -1,0 +1,16 @@
+{
+  "scene_name": "sofa_03_env_2",
+  "context_view_indices": [
+    27,
+    31,
+    34,
+    43
+  ],
+  "target_view_indices": [
+    27,
+    31,
+    34,
+    43
+  ],
+  "relit_scene_name": "sofa_03_env_0"
+}

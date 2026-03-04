@@ -1,0 +1,16 @@
+{
+  "scene_name": "baseball_01_env_2",
+  "context_view_indices": [
+    70,
+    76,
+    79,
+    87
+  ],
+  "target_view_indices": [
+    70,
+    76,
+    79,
+    87
+  ],
+  "relit_scene_name": "baseball_01_env_1"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "ClassicNightstand_01_env_0",
+  "context_view_indices": [
+    45,
+    47,
+    50,
+    63
+  ],
+  "target_view_indices": [
+    45,
+    47,
+    50,
+    63
+  ],
+  "relit_scene_name": "ClassicNightstand_01_env_1"
+}

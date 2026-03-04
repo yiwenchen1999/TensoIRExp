@@ -1,0 +1,16 @@
+{
+  "scene_name": "street_rat_env_1",
+  "context_view_indices": [
+    49,
+    58,
+    82,
+    84
+  ],
+  "target_view_indices": [
+    49,
+    58,
+    82,
+    84
+  ],
+  "relit_scene_name": "street_rat_white_env_0"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "sungka_board_env_2",
+  "context_view_indices": [
+    26,
+    27,
+    40,
+    44
+  ],
+  "target_view_indices": [
+    26,
+    27,
+    40,
+    44
+  ],
+  "relit_scene_name": "sungka_board_white_env_0"
+}

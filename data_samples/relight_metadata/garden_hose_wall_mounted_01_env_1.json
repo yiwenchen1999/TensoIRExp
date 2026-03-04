@@ -1,0 +1,16 @@
+{
+  "scene_name": "garden_hose_wall_mounted_01_env_1",
+  "context_view_indices": [
+    30,
+    33,
+    45,
+    77
+  ],
+  "target_view_indices": [
+    30,
+    33,
+    45,
+    77
+  ],
+  "relit_scene_name": "garden_hose_wall_mounted_01_env_2"
+}

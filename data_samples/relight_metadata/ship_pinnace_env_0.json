@@ -1,0 +1,16 @@
+{
+  "scene_name": "ship_pinnace_env_0",
+  "context_view_indices": [
+    70,
+    71,
+    80,
+    98
+  ],
+  "target_view_indices": [
+    70,
+    71,
+    80,
+    98
+  ],
+  "relit_scene_name": "ship_pinnace_env_1"
+}

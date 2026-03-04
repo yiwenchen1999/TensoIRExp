@@ -1,0 +1,16 @@
+{
+  "scene_name": "desk_lamp_arm_01_env_0",
+  "context_view_indices": [
+    74,
+    86,
+    92,
+    95
+  ],
+  "target_view_indices": [
+    74,
+    86,
+    92,
+    95
+  ],
+  "relit_scene_name": "desk_lamp_arm_01_white_env_0"
+}

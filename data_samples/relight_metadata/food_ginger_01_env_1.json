@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_ginger_01_env_1",
+  "context_view_indices": [
+    10,
+    14,
+    27,
+    37
+  ],
+  "target_view_indices": [
+    10,
+    14,
+    27,
+    37
+  ],
+  "relit_scene_name": "food_ginger_01_white_env_0"
+}

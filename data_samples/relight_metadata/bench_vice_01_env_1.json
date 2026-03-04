@@ -1,0 +1,16 @@
+{
+  "scene_name": "bench_vice_01_env_1",
+  "context_view_indices": [
+    31,
+    49,
+    70,
+    75
+  ],
+  "target_view_indices": [
+    31,
+    49,
+    70,
+    75
+  ],
+  "relit_scene_name": "bench_vice_01_white_env_0"
+}

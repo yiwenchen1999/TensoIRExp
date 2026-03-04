@@ -1,0 +1,16 @@
+{
+  "scene_name": "Drill_01_env_0",
+  "context_view_indices": [
+    74,
+    77,
+    81,
+    82
+  ],
+  "target_view_indices": [
+    74,
+    77,
+    81,
+    82
+  ],
+  "relit_scene_name": "Drill_01_env_2"
+}

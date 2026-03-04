@@ -1,0 +1,16 @@
+{
+  "scene_name": "planter_box_02_white_env_0",
+  "context_view_indices": [
+    15,
+    48,
+    70,
+    73
+  ],
+  "target_view_indices": [
+    15,
+    48,
+    70,
+    73
+  ],
+  "relit_scene_name": "planter_box_02_env_0"
+}

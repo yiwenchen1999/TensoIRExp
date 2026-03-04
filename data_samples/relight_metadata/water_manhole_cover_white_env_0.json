@@ -1,0 +1,16 @@
+{
+  "scene_name": "water_manhole_cover_white_env_0",
+  "context_view_indices": [
+    11,
+    26,
+    53,
+    67
+  ],
+  "target_view_indices": [
+    11,
+    26,
+    53,
+    67
+  ],
+  "relit_scene_name": "water_manhole_cover_env_1"
+}

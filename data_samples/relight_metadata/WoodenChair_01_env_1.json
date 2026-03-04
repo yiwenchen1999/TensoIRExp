@@ -1,0 +1,16 @@
+{
+  "scene_name": "WoodenChair_01_env_1",
+  "context_view_indices": [
+    8,
+    31,
+    71,
+    87
+  ],
+  "target_view_indices": [
+    8,
+    31,
+    71,
+    87
+  ],
+  "relit_scene_name": "WoodenChair_01_white_env_0"
+}

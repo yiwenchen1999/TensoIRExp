@@ -1,0 +1,16 @@
+{
+  "scene_name": "potted_plant_02_env_2",
+  "context_view_indices": [
+    8,
+    15,
+    27,
+    97
+  ],
+  "target_view_indices": [
+    8,
+    15,
+    27,
+    97
+  ],
+  "relit_scene_name": "potted_plant_02_white_env_0"
+}

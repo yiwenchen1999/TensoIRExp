@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_kiwi_01_white_env_0",
+  "context_view_indices": [
+    18,
+    21,
+    43,
+    51
+  ],
+  "target_view_indices": [
+    18,
+    21,
+    43,
+    51
+  ],
+  "relit_scene_name": "food_kiwi_01_env_2"
+}

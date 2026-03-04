@@ -1,0 +1,16 @@
+{
+  "scene_name": "plastic_bottle_gallon_env_2",
+  "context_view_indices": [
+    8,
+    14,
+    57,
+    82
+  ],
+  "target_view_indices": [
+    8,
+    14,
+    57,
+    82
+  ],
+  "relit_scene_name": "plastic_bottle_gallon_env_1"
+}

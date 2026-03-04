@@ -1,0 +1,16 @@
+{
+  "scene_name": "brass_pan_01_env_0",
+  "context_view_indices": [
+    51,
+    56,
+    61,
+    66
+  ],
+  "target_view_indices": [
+    51,
+    56,
+    61,
+    66
+  ],
+  "relit_scene_name": "brass_pan_01_env_1"
+}

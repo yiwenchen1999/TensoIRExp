@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_avocado_01_env_2",
+  "context_view_indices": [
+    9,
+    16,
+    18,
+    43
+  ],
+  "target_view_indices": [
+    9,
+    16,
+    18,
+    43
+  ],
+  "relit_scene_name": "food_avocado_01_white_env_0"
+}

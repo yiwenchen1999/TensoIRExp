@@ -1,0 +1,16 @@
+{
+  "scene_name": "dead_tree_trunk_env_0",
+  "context_view_indices": [
+    18,
+    29,
+    64,
+    69
+  ],
+  "target_view_indices": [
+    18,
+    29,
+    64,
+    69
+  ],
+  "relit_scene_name": "dead_tree_trunk_white_env_0"
+}

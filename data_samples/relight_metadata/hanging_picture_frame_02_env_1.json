@@ -1,0 +1,16 @@
+{
+  "scene_name": "hanging_picture_frame_02_env_1",
+  "context_view_indices": [
+    11,
+    15,
+    24,
+    25
+  ],
+  "target_view_indices": [
+    11,
+    15,
+    24,
+    25
+  ],
+  "relit_scene_name": "hanging_picture_frame_02_env_0"
+}

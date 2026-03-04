@@ -1,0 +1,16 @@
+{
+  "scene_name": "garden_gloves_01_white_env_0",
+  "context_view_indices": [
+    47,
+    52,
+    54,
+    68
+  ],
+  "target_view_indices": [
+    47,
+    52,
+    54,
+    68
+  ],
+  "relit_scene_name": "garden_gloves_01_env_1"
+}

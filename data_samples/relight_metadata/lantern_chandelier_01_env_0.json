@@ -1,0 +1,16 @@
+{
+  "scene_name": "lantern_chandelier_01_env_0",
+  "context_view_indices": [
+    36,
+    43,
+    53,
+    59
+  ],
+  "target_view_indices": [
+    36,
+    43,
+    53,
+    59
+  ],
+  "relit_scene_name": "lantern_chandelier_01_env_1"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_pomegranate_01_env_2",
+  "context_view_indices": [
+    27,
+    35,
+    41,
+    45
+  ],
+  "target_view_indices": [
+    27,
+    35,
+    41,
+    45
+  ],
+  "relit_scene_name": "food_pomegranate_01_white_env_0"
+}

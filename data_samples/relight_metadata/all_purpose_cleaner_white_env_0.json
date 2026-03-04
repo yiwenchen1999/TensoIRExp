@@ -1,0 +1,16 @@
+{
+  "scene_name": "all_purpose_cleaner_white_env_0",
+  "context_view_indices": [
+    6,
+    53,
+    67,
+    77
+  ],
+  "target_view_indices": [
+    6,
+    53,
+    67,
+    77
+  ],
+  "relit_scene_name": "all_purpose_cleaner_env_2"
+}

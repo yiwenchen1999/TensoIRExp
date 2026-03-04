@@ -1,0 +1,16 @@
+{
+  "scene_name": "cassette_player_env_0",
+  "context_view_indices": [
+    0,
+    19,
+    48,
+    85
+  ],
+  "target_view_indices": [
+    0,
+    19,
+    48,
+    85
+  ],
+  "relit_scene_name": "cassette_player_env_2"
+}

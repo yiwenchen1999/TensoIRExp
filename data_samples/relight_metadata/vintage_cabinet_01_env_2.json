@@ -1,0 +1,16 @@
+{
+  "scene_name": "vintage_cabinet_01_env_2",
+  "context_view_indices": [
+    46,
+    47,
+    48,
+    67
+  ],
+  "target_view_indices": [
+    46,
+    47,
+    48,
+    67
+  ],
+  "relit_scene_name": "vintage_cabinet_01_env_1"
+}

@@ -1,0 +1,16 @@
+{
+  "scene_name": "electric_stove_white_env_0",
+  "context_view_indices": [
+    29,
+    44,
+    48,
+    66
+  ],
+  "target_view_indices": [
+    29,
+    44,
+    48,
+    66
+  ],
+  "relit_scene_name": "electric_stove_env_1"
+}

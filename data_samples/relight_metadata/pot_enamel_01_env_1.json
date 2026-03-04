@@ -1,0 +1,16 @@
+{
+  "scene_name": "pot_enamel_01_env_1",
+  "context_view_indices": [
+    42,
+    43,
+    47,
+    78
+  ],
+  "target_view_indices": [
+    42,
+    43,
+    47,
+    78
+  ],
+  "relit_scene_name": "pot_enamel_01_env_0"
+}

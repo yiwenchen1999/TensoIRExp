@@ -1,0 +1,16 @@
+{
+  "scene_name": "SchoolChair_01_white_env_0",
+  "context_view_indices": [
+    22,
+    33,
+    40,
+    60
+  ],
+  "target_view_indices": [
+    22,
+    33,
+    40,
+    60
+  ],
+  "relit_scene_name": "SchoolChair_01_env_1"
+}

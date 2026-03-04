@@ -1,0 +1,16 @@
+{
+  "scene_name": "vintage_grandfather_clock_01_white_env_0",
+  "context_view_indices": [
+    3,
+    6,
+    58,
+    90
+  ],
+  "target_view_indices": [
+    3,
+    6,
+    58,
+    90
+  ],
+  "relit_scene_name": "vintage_grandfather_clock_01_env_1"
+}

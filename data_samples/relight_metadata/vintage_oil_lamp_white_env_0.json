@@ -1,0 +1,16 @@
+{
+  "scene_name": "vintage_oil_lamp_white_env_0",
+  "context_view_indices": [
+    44,
+    83,
+    94,
+    99
+  ],
+  "target_view_indices": [
+    44,
+    83,
+    94,
+    99
+  ],
+  "relit_scene_name": "vintage_oil_lamp_env_0"
+}

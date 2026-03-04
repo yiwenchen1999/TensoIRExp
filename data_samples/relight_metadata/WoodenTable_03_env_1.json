@@ -1,0 +1,16 @@
+{
+  "scene_name": "WoodenTable_03_env_1",
+  "context_view_indices": [
+    11,
+    42,
+    43,
+    69
+  ],
+  "target_view_indices": [
+    11,
+    42,
+    43,
+    69
+  ],
+  "relit_scene_name": "WoodenTable_03_env_0"
+}

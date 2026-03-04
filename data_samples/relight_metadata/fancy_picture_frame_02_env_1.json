@@ -1,0 +1,16 @@
+{
+  "scene_name": "fancy_picture_frame_02_env_1",
+  "context_view_indices": [
+    35,
+    57,
+    86,
+    91
+  ],
+  "target_view_indices": [
+    35,
+    57,
+    86,
+    91
+  ],
+  "relit_scene_name": "fancy_picture_frame_02_white_env_0"
+}

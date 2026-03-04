@@ -1,0 +1,16 @@
+{
+  "scene_name": "spray_paint_bottles_02_white_env_0",
+  "context_view_indices": [
+    24,
+    30,
+    41,
+    42
+  ],
+  "target_view_indices": [
+    24,
+    30,
+    41,
+    42
+  ],
+  "relit_scene_name": "spray_paint_bottles_02_env_0"
+}

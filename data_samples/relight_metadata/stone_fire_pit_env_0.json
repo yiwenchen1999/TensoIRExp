@@ -1,0 +1,16 @@
+{
+  "scene_name": "stone_fire_pit_env_0",
+  "context_view_indices": [
+    34,
+    51,
+    54,
+    68
+  ],
+  "target_view_indices": [
+    34,
+    51,
+    54,
+    68
+  ],
+  "relit_scene_name": "stone_fire_pit_env_2"
+}

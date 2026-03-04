@@ -1,0 +1,16 @@
+{
+  "scene_name": "magnifying_glass_01_env_1",
+  "context_view_indices": [
+    43,
+    44,
+    53,
+    57
+  ],
+  "target_view_indices": [
+    43,
+    44,
+    53,
+    57
+  ],
+  "relit_scene_name": "magnifying_glass_01_env_0"
+}

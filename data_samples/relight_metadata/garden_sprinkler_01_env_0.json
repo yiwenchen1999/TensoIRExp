@@ -1,0 +1,16 @@
+{
+  "scene_name": "garden_sprinkler_01_env_0",
+  "context_view_indices": [
+    44,
+    54,
+    59,
+    70
+  ],
+  "target_view_indices": [
+    44,
+    54,
+    59,
+    70
+  ],
+  "relit_scene_name": "garden_sprinkler_01_env_2"
+}

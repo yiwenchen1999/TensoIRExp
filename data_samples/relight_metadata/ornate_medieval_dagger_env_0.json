@@ -1,0 +1,16 @@
+{
+  "scene_name": "ornate_medieval_dagger_env_0",
+  "context_view_indices": [
+    60,
+    78,
+    81,
+    85
+  ],
+  "target_view_indices": [
+    60,
+    78,
+    81,
+    85
+  ],
+  "relit_scene_name": "ornate_medieval_dagger_env_2"
+}

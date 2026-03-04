@@ -1,0 +1,16 @@
+{
+  "scene_name": "Shelf_01_white_env_0",
+  "context_view_indices": [
+    0,
+    47,
+    80,
+    93
+  ],
+  "target_view_indices": [
+    0,
+    47,
+    80,
+    93
+  ],
+  "relit_scene_name": "Shelf_01_env_0"
+}

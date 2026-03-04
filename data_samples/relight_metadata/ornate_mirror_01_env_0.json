@@ -1,0 +1,16 @@
+{
+  "scene_name": "ornate_mirror_01_env_0",
+  "context_view_indices": [
+    6,
+    27,
+    38,
+    96
+  ],
+  "target_view_indices": [
+    6,
+    27,
+    38,
+    96
+  ],
+  "relit_scene_name": "ornate_mirror_01_env_2"
+}

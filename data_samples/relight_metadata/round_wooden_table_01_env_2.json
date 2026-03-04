@@ -1,0 +1,16 @@
+{
+  "scene_name": "round_wooden_table_01_env_2",
+  "context_view_indices": [
+    69,
+    72,
+    81,
+    98
+  ],
+  "target_view_indices": [
+    69,
+    72,
+    81,
+    98
+  ],
+  "relit_scene_name": "round_wooden_table_01_white_env_0"
+}

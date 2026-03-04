@@ -1,0 +1,16 @@
+{
+  "scene_name": "modern_arm_chair_01_env_0",
+  "context_view_indices": [
+    13,
+    16,
+    18,
+    25
+  ],
+  "target_view_indices": [
+    13,
+    16,
+    18,
+    25
+  ],
+  "relit_scene_name": "modern_arm_chair_01_env_2"
+}

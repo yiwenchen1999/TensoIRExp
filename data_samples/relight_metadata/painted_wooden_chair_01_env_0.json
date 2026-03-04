@@ -1,0 +1,16 @@
+{
+  "scene_name": "painted_wooden_chair_01_env_0",
+  "context_view_indices": [
+    29,
+    40,
+    52,
+    54
+  ],
+  "target_view_indices": [
+    29,
+    40,
+    52,
+    54
+  ],
+  "relit_scene_name": "painted_wooden_chair_01_env_2"
+}

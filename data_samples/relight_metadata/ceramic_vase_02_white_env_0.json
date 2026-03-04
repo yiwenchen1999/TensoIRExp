@@ -1,0 +1,16 @@
+{
+  "scene_name": "ceramic_vase_02_white_env_0",
+  "context_view_indices": [
+    30,
+    40,
+    80,
+    88
+  ],
+  "target_view_indices": [
+    30,
+    40,
+    80,
+    88
+  ],
+  "relit_scene_name": "ceramic_vase_02_env_1"
+}

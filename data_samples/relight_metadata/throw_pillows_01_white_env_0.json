@@ -1,0 +1,16 @@
+{
+  "scene_name": "throw_pillows_01_white_env_0",
+  "context_view_indices": [
+    15,
+    19,
+    40,
+    42
+  ],
+  "target_view_indices": [
+    15,
+    19,
+    40,
+    42
+  ],
+  "relit_scene_name": "throw_pillows_01_env_2"
+}

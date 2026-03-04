@@ -1,0 +1,16 @@
+{
+  "scene_name": "katana_stand_01_env_0",
+  "context_view_indices": [
+    52,
+    55,
+    67,
+    72
+  ],
+  "target_view_indices": [
+    52,
+    55,
+    67,
+    72
+  ],
+  "relit_scene_name": "katana_stand_01_white_env_0"
+}

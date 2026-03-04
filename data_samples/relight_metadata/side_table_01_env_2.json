@@ -1,0 +1,16 @@
+{
+  "scene_name": "side_table_01_env_2",
+  "context_view_indices": [
+    44,
+    76,
+    80,
+    87
+  ],
+  "target_view_indices": [
+    44,
+    76,
+    80,
+    87
+  ],
+  "relit_scene_name": "side_table_01_white_env_0"
+}

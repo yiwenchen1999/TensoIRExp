@@ -1,0 +1,16 @@
+{
+  "scene_name": "food_lime_01_env_2",
+  "context_view_indices": [
+    4,
+    29,
+    39,
+    60
+  ],
+  "target_view_indices": [
+    4,
+    29,
+    39,
+    60
+  ],
+  "relit_scene_name": "food_lime_01_env_0"
+}

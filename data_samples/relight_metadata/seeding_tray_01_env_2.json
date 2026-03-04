@@ -1,0 +1,16 @@
+{
+  "scene_name": "seeding_tray_01_env_2",
+  "context_view_indices": [
+    25,
+    36,
+    62,
+    63
+  ],
+  "target_view_indices": [
+    25,
+    36,
+    62,
+    63
+  ],
+  "relit_scene_name": "seeding_tray_01_white_env_0"
+}

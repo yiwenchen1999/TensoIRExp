@@ -1,0 +1,16 @@
+{
+  "scene_name": "kite_shield_white_env_0",
+  "context_view_indices": [
+    28,
+    59,
+    93,
+    95
+  ],
+  "target_view_indices": [
+    28,
+    59,
+    93,
+    95
+  ],
+  "relit_scene_name": "kite_shield_env_0"
+}

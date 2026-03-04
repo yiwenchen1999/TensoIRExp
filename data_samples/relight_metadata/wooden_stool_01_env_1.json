@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_stool_01_env_1",
+  "context_view_indices": [
+    78,
+    85,
+    89,
+    93
+  ],
+  "target_view_indices": [
+    78,
+    85,
+    89,
+    93
+  ],
+  "relit_scene_name": "wooden_stool_01_env_0"
+}

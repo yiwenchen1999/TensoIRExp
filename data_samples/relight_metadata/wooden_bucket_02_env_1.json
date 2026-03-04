@@ -1,0 +1,16 @@
+{
+  "scene_name": "wooden_bucket_02_env_1",
+  "context_view_indices": [
+    15,
+    22,
+    24,
+    31
+  ],
+  "target_view_indices": [
+    15,
+    22,
+    24,
+    31
+  ],
+  "relit_scene_name": "wooden_bucket_02_white_env_0"
+}

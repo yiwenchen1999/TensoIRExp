@@ -1,0 +1,16 @@
+{
+  "scene_name": "cleaner_tin_01_env_0",
+  "context_view_indices": [
+    40,
+    49,
+    68,
+    78
+  ],
+  "target_view_indices": [
+    40,
+    49,
+    68,
+    78
+  ],
+  "relit_scene_name": "cleaner_tin_01_env_1"
+}

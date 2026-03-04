@@ -1,0 +1,16 @@
+{
+  "scene_name": "drawer_cabinet_env_2",
+  "context_view_indices": [
+    36,
+    44,
+    79,
+    91
+  ],
+  "target_view_indices": [
+    36,
+    44,
+    79,
+    91
+  ],
+  "relit_scene_name": "drawer_cabinet_env_1"
+}

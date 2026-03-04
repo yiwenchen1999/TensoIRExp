@@ -1,0 +1,16 @@
+{
+  "scene_name": "Megaphone_01_env_0",
+  "context_view_indices": [
+    51,
+    53,
+    64,
+    66
+  ],
+  "target_view_indices": [
+    51,
+    53,
+    64,
+    66
+  ],
+  "relit_scene_name": "Megaphone_01_env_2"
+}

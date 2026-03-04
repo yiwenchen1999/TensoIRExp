@@ -1,0 +1,16 @@
+{
+  "scene_name": "rusted_spade_01_env_1",
+  "context_view_indices": [
+    25,
+    29,
+    38,
+    40
+  ],
+  "target_view_indices": [
+    25,
+    29,
+    38,
+    40
+  ],
+  "relit_scene_name": "rusted_spade_01_env_0"
+}

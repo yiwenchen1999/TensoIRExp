@@ -1,0 +1,16 @@
+{
+  "scene_name": "WetFloorSign_01_env_2",
+  "context_view_indices": [
+    57,
+    58,
+    84,
+    85
+  ],
+  "target_view_indices": [
+    57,
+    58,
+    84,
+    85
+  ],
+  "relit_scene_name": "WetFloorSign_01_env_0"
+}

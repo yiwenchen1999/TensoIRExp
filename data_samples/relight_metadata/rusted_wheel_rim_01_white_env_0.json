@@ -1,0 +1,16 @@
+{
+  "scene_name": "rusted_wheel_rim_01_white_env_0",
+  "context_view_indices": [
+    83,
+    88,
+    93,
+    94
+  ],
+  "target_view_indices": [
+    83,
+    88,
+    93,
+    94
+  ],
+  "relit_scene_name": "rusted_wheel_rim_01_env_2"
+}

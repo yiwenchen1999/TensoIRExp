@@ -1,0 +1,3 @@
+__pycache__/
+*.pyc
+data_samples/objaverse_processed_with_envmaps/

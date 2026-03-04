@@ -1,0 +1,16 @@
+{
+  "scene_name": "multi_cleaner_5_litre_env_0",
+  "context_view_indices": [
+    2,
+    18,
+    42,
+    56
+  ],
+  "target_view_indices": [
+    2,
+    18,
+    42,
+    56
+  ],
+  "relit_scene_name": "multi_cleaner_5_litre_env_1"
+}

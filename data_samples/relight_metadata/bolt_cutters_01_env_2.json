@@ -1,0 +1,16 @@
+{
+  "scene_name": "bolt_cutters_01_env_2",
+  "context_view_indices": [
+    4,
+    30,
+    49,
+    76
+  ],
+  "target_view_indices": [
+    4,
+    30,
+    49,
+    76
+  ],
+  "relit_scene_name": "bolt_cutters_01_white_env_0"
+}

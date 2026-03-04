@@ -1,0 +1,16 @@
+{
+  "scene_name": "outdoor_table_chair_set_01_env_1",
+  "context_view_indices": [
+    8,
+    11,
+    35,
+    45
+  ],
+  "target_view_indices": [
+    8,
+    11,
+    35,
+    45
+  ],
+  "relit_scene_name": "outdoor_table_chair_set_01_env_2"
+}
