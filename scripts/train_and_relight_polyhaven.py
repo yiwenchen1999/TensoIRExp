@@ -692,6 +692,7 @@ def main():
     parser.add_argument('--output_dir', type=str, default='./output/polyhaven_relight', help='Root output directory')
     parser.add_argument('--force_retrain', action='store_true', help='Force retrain even if checkpoint exists')
     parser.add_argument('--relight_only', action='store_true', help='Skip training, only do relighting (requires existing ckpt)')
+    parser.add_argument('--train_only', action='store_true', help='Only train, skip relighting')
     parser.add_argument('--vis_equation', type=str, default='nerv', choices=['nerv', 'nerfactor'])
     parser.add_argument('--acc_thre', type=float, default=0.5)
     parser.add_argument('--relight_batch_size', type=int, default=4096)
@@ -774,6 +775,8 @@ def main():
             del train_dataset
 
         # --- Relight ---
+        if batch_args.train_only:
+            continue
         envmap_dir = Path(batch_args.data_root) / 'envmaps' / relit_scene_name
         if not envmap_dir.exists():
             print(f'[WARN] Envmap dir not found: {envmap_dir}, skipping relighting for {meta_file.stem}')
