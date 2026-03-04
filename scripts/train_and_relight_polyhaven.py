@@ -126,7 +126,7 @@ def load_envmap_from_png(envmap_dir, frame_idx=0):
             img = torch.from_numpy(img).float().to(device)
             W = img.shape[1]
             shift = W // 4
-            img = torch.cat([img[:, -shift:, :], img[:, :-shift, :]], dim=1)
+            img = torch.cat([img[:, shift:, :], img[:, :shift, :]], dim=1)
             return img, img.shape[0], img.shape[1]
 
     hdr_png = envmap_dir / f'{frame_idx:05d}_hdr.png'
@@ -140,10 +140,10 @@ def load_envmap_from_png(envmap_dir, frame_idx=0):
 
     img = _recover_hdr_from_pngs(hdr_png, ldr_png)
     img = torch.from_numpy(img).float().to(device)
-    # Rotate 90° left: shift rightmost 1/4 to the left
+    # Rotate 90° right: shift leftmost 1/4 to the right
     W = img.shape[1]
     shift = W // 4
-    img = torch.cat([img[:, -shift:, :], img[:, :-shift, :]], dim=1)
+    img = torch.cat([img[:, shift:, :], img[:, :shift, :]], dim=1)
     return img, img.shape[0], img.shape[1]
 
 
