@@ -124,6 +124,9 @@ def load_envmap_from_png(envmap_dir, frame_idx=0):
             from models.relight_utils import read_hdr
             img = read_hdr(str(candidates[0]))
             img = torch.from_numpy(img).float().to(device)
+            W = img.shape[1]
+            shift = W // 4
+            img = torch.cat([img[:, -shift:, :], img[:, :-shift, :]], dim=1)
             return img, img.shape[0], img.shape[1]
 
     hdr_png = envmap_dir / f'{frame_idx:05d}_hdr.png'
@@ -137,6 +140,10 @@ def load_envmap_from_png(envmap_dir, frame_idx=0):
 
     img = _recover_hdr_from_pngs(hdr_png, ldr_png)
     img = torch.from_numpy(img).float().to(device)
+    # Rotate 90° left: shift rightmost 1/4 to the left
+    W = img.shape[1]
+    shift = W // 4
+    img = torch.cat([img[:, -shift:, :], img[:, :-shift, :]], dim=1)
     return img, img.shape[0], img.shape[1]
 
 
@@ -712,13 +719,11 @@ def main():
 
         scene_name = meta['scene_name']
         relit_scene_name = meta['relit_scene_name']
-        target_indices = meta.get('target_view_indices', None)
-
         print(f'\n{"="*60}')
         print(f'Processing: {meta_file.stem}')
         print(f'  scene_name     = {scene_name}')
         print(f'  relit_scene    = {relit_scene_name}')
-        print(f'  target_indices = {target_indices}')
+        print(f'  relight all poses')
         print(f'{"="*60}')
 
         # --- Train ---
@@ -779,7 +784,7 @@ def main():
         relight_out = os.path.join(batch_args.output_dir, 'relight', meta_file.stem)
         relight_scene(
             tensoIR, test_dataset, envir_light, relight_out,
-            target_indices=target_indices,
+            target_indices=None,
             acc_thre=batch_args.acc_thre,
             vis_equation=batch_args.vis_equation,
             batch_size=batch_args.relight_batch_size,
