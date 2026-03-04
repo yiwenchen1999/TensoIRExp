@@ -263,6 +263,7 @@ def train_scene(args, scene_name, data_root):
 
     ckpt_path = f'{logfolder}/{scene_name}.th'
     ckpt_to_load = None
+    min_resume_iter = 1000
 
     if not getattr(args, 'force_retrain', False):
         if os.path.exists(ckpt_path):
@@ -270,12 +271,21 @@ def train_scene(args, scene_name, data_root):
         else:
             ckpt_dir = f'{logfolder}/checkpoints'
             if os.path.isdir(ckpt_dir):
-                saved = sorted(
-                    [f for f in os.listdir(ckpt_dir) if f.endswith('.th')],
-                    key=lambda f: os.path.getmtime(os.path.join(ckpt_dir, f)),
-                )
-                if saved:
-                    ckpt_to_load = os.path.join(ckpt_dir, saved[-1])
+                import re
+                ckpt_files = []
+                for f in os.listdir(ckpt_dir):
+                    if not f.endswith('.th'):
+                        continue
+                    m = re.search(r'_(\d+)\.th$', f)
+                    if m:
+                        it = int(m.group(1))
+                        if it >= min_resume_iter:
+                            ckpt_files.append((it, f))
+                if ckpt_files:
+                    ckpt_files.sort(key=lambda x: x[0])
+                    best_iter, best_file = ckpt_files[-1]
+                    ckpt_to_load = os.path.join(ckpt_dir, best_file)
+                    print(f'[train_scene] Found intermediate checkpoint at iter {best_iter}')
 
     if ckpt_to_load is not None:
         print(f'[train_scene] Loading checkpoint: {ckpt_to_load}')
@@ -434,8 +444,8 @@ def train_scene(args, scene_name, data_root):
             summary_writer.add_scalar('test/psnr_rgb', np.mean(PSNRs_test), global_step=iteration)
             summary_writer.add_scalar('test/psnr_rgb_brdf', np.mean(PSNRs_rgb_brdf_test), global_step=iteration)
 
-        # Periodic checkpoint save
-        if iteration % args.save_iters == 0:
+        # Periodic checkpoint save (skip iteration 0)
+        if iteration > 0 and iteration % args.save_iters == 0:
             tensoIR.save(f'{logfolder}/checkpoints/{scene_name}_{iteration}.th')
 
         for param_group in optimizer.param_groups:
