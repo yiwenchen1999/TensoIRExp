@@ -289,7 +289,7 @@ def train_scene(args, scene_name, data_root):
 
     if ckpt_to_load is not None:
         print(f'[train_scene] Loading checkpoint: {ckpt_to_load}')
-        ckpt = torch.load(ckpt_to_load, map_location=device)
+        ckpt = torch.load(ckpt_to_load, map_location=device, weights_only=False)
         kwargs = ckpt['kwargs']
         kwargs.update({'device': device})
         tensoIR = eval(args.model_name)(**kwargs)
@@ -654,7 +654,7 @@ def main():
                 print(f'[SKIP] No checkpoint for {scene_name} and --relight_only is set')
                 continue
             print(f'Loading checkpoint from {ckpt_path}')
-            ckpt = torch.load(ckpt_path, map_location=device)
+            ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
             kwargs = ckpt['kwargs']
             kwargs.update({'device': device})
             tensoIR = eval(args.model_name)(**kwargs)
