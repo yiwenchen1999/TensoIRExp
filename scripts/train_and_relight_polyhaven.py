@@ -262,13 +262,31 @@ def train_scene(args, scene_name, data_root):
     nSamples = min(args.nSamples, cal_n_samples(reso_cur, args.step_ratio))
 
     ckpt_path = f'{logfolder}/{scene_name}.th'
-    if os.path.exists(ckpt_path) and not getattr(args, 'force_retrain', False):
-        print(f'[train_scene] Checkpoint found at {ckpt_path}, loading ...')
-        ckpt = torch.load(ckpt_path, map_location=device)
+    ckpt_to_load = None
+
+    if not getattr(args, 'force_retrain', False):
+        if os.path.exists(ckpt_path):
+            ckpt_to_load = ckpt_path
+        else:
+            ckpt_dir = f'{logfolder}/checkpoints'
+            if os.path.isdir(ckpt_dir):
+                saved = sorted(
+                    [f for f in os.listdir(ckpt_dir) if f.endswith('.th')],
+                    key=lambda f: os.path.getmtime(os.path.join(ckpt_dir, f)),
+                )
+                if saved:
+                    ckpt_to_load = os.path.join(ckpt_dir, saved[-1])
+
+    if ckpt_to_load is not None:
+        print(f'[train_scene] Loading checkpoint: {ckpt_to_load}')
+        ckpt = torch.load(ckpt_to_load, map_location=device)
         kwargs = ckpt['kwargs']
         kwargs.update({'device': device})
         tensoIR = eval(args.model_name)(**kwargs)
         tensoIR.load(ckpt)
+        if ckpt_to_load != ckpt_path:
+            tensoIR.save(ckpt_path)
+            print(f'[train_scene] Promoted intermediate checkpoint → {ckpt_path}')
         return tensoIR, logfolder, test_dataset
 
     tensoIR = eval(args.model_name)(
