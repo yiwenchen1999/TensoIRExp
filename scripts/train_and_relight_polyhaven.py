@@ -401,6 +401,25 @@ def train_scene(args, scene_name, data_root):
                 f'PSNR_brdf={np.mean(PSNRs_rgb_brdf[-100:]):.2f}'
             )
 
+        # Periodic test-set visualization
+        if iteration % args.vis_every == args.vis_every - 1 and args.N_vis != 0 and relight_flag:
+            from renderer import evaluation_iter_TensoIR_simple
+            PSNRs_test, PSNRs_rgb_brdf_test = evaluation_iter_TensoIR_simple(
+                test_dataset, tensoIR, args, renderer,
+                f'{logfolder}/imgs_vis/',
+                prtx=f'{iteration:06d}_',
+                N_samples=nSamples,
+                white_bg=white_bg, ndc_ray=ndc_ray,
+                compute_extra_metrics=False,
+                logger=summary_writer, step=iteration, device=device,
+            )
+            summary_writer.add_scalar('test/psnr_rgb', np.mean(PSNRs_test), global_step=iteration)
+            summary_writer.add_scalar('test/psnr_rgb_brdf', np.mean(PSNRs_rgb_brdf_test), global_step=iteration)
+
+        # Periodic checkpoint save
+        if iteration % args.save_iters == 0:
+            tensoIR.save(f'{logfolder}/checkpoints/{scene_name}_{iteration}.th')
+
         for param_group in optimizer.param_groups:
             param_group['lr'] = param_group['lr'] * lr_factor
 
