@@ -681,6 +681,132 @@ def relight_scene(tensoIR, dataset, envir_light, out_dir,
 
 
 # ---------------------------------------------------------------------------
+# Benchmark utilities
+# ---------------------------------------------------------------------------
+
+class BenchmarkTimer:
+    """Tracks wall-clock time per phase and peak GPU / CPU memory."""
+
+    def __init__(self):
+        import time as _time
+        import resource as _resource
+        self._time = _time
+        self._resource = _resource
+        try:
+            import psutil
+            self._process = psutil.Process(os.getpid())
+        except ImportError:
+            self._process = None
+
+        self.phases = {}
+        self._current = None
+        self._t0 = None
+
+        if torch.cuda.is_available():
+            torch.cuda.reset_peak_memory_stats()
+            torch.cuda.synchronize()
+
+    def start(self, name):
+        if self._current is not None:
+            self.stop()
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+        self._current = name
+        self._t0 = self._time.perf_counter()
+
+    def stop(self):
+        if self._current is None:
+            return
+        if torch.cuda.is_available():
+            torch.cuda.synchronize()
+        elapsed = self._time.perf_counter() - self._t0
+        self.phases[self._current] = elapsed
+        self._current = None
+
+    def peak_gpu_mb(self):
+        if torch.cuda.is_available():
+            return torch.cuda.max_memory_allocated() / (1024 ** 2)
+        return 0.0
+
+    def peak_cpu_mb(self):
+        peak = 0.0
+        if self._process is not None:
+            peak = self._process.memory_info().rss / (1024 ** 2)
+        try:
+            ru = self._resource.getrusage(self._resource.RUSAGE_SELF).ru_maxrss
+            if sys.platform == 'darwin':
+                peak = max(peak, ru / (1024 ** 2))
+            else:
+                peak = max(peak, ru / 1024)
+        except Exception:
+            pass
+        return peak
+
+    def gpu_name(self):
+        if torch.cuda.is_available():
+            return torch.cuda.get_device_name(0)
+        return 'N/A'
+
+    def total_time(self):
+        return sum(self.phases.values())
+
+    def report(self, scene_name, relit_scene_name, n_views, W, H, out_path):
+        self.stop()
+        total = self.total_time()
+        gpu_mb = self.peak_gpu_mb()
+        cpu_mb = self.peak_cpu_mb()
+        gpu = self.gpu_name()
+
+        lines = [
+            '',
+            '=' * 60,
+            'BENCHMARK RESULTS',
+            '=' * 60,
+            f'  Scene            : {scene_name}',
+            f'  Relit envmap     : {relit_scene_name}',
+            f'  Views            : {n_views}',
+            f'  Resolution       : {W}x{H}',
+            '-' * 60,
+        ]
+        for name, t in self.phases.items():
+            lines.append(f'  {name:<20s}: {t:>8.2f} s')
+        lines += [
+            '-' * 60,
+            f'  {"Total":<20s}: {total:>8.2f} s',
+        ]
+        if 'relight' in self.phases and n_views > 0:
+            pv = self.phases['relight'] / n_views
+            lines.append(f'  Relight per-view   : {pv:.3f} s  ({1.0/pv:.2f} views/s)')
+        lines += [
+            '-' * 60,
+            f'  Peak GPU memory  : {gpu_mb:.1f} MB  ({gpu})',
+            f'  Peak CPU memory  : {cpu_mb:.1f} MB',
+            '=' * 60,
+        ]
+
+        for l in lines:
+            print(l)
+
+        os.makedirs(os.path.dirname(out_path) if os.path.dirname(out_path) else '.', exist_ok=True)
+        with open(out_path, 'w') as f:
+            f.write(f'scene: {scene_name}\n')
+            f.write(f'relit_envmap: {relit_scene_name}\n')
+            f.write(f'views: {n_views}\n')
+            f.write(f'resolution: {W}x{H}\n')
+            for name, t in self.phases.items():
+                f.write(f'{name}_time_s: {t:.4f}\n')
+            f.write(f'total_time_s: {total:.4f}\n')
+            if 'relight' in self.phases and n_views > 0:
+                pv = self.phases['relight'] / n_views
+                f.write(f'relight_per_view_s: {pv:.4f}\n')
+                f.write(f'relight_views_per_s: {1.0/pv:.4f}\n')
+            f.write(f'peak_gpu_mb: {gpu_mb:.1f}\n')
+            f.write(f'peak_cpu_mb: {cpu_mb:.1f}\n')
+            f.write(f'gpu: {gpu}\n')
+        print(f'Report saved to {out_path}')
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -696,6 +822,9 @@ def main():
     parser.add_argument('--vis_equation', type=str, default='nerv', choices=['nerv', 'nerfactor'])
     parser.add_argument('--acc_thre', type=float, default=0.5)
     parser.add_argument('--relight_batch_size', type=int, default=4096)
+    parser.add_argument('--benchmark', action='store_true',
+                        help='Run relighting benchmark: measure end-to-end time, '
+                             'peak GPU memory, and peak CPU memory for the first scene')
     batch_args, remaining = parser.parse_known_args()
 
     sys.argv = [sys.argv[0]] + ['--config', batch_args.config] + remaining
@@ -729,14 +858,24 @@ def main():
         print(f'  relight all poses')
         print(f'{"="*60}')
 
+        bench = BenchmarkTimer() if batch_args.benchmark else None
+
         # --- Train ---
         if scene_name not in trained_scenes and not batch_args.relight_only:
             print(f'\n>>> Training scene: {scene_name}')
+            if bench:
+                bench.start('train')
             tensoIR, logfolder, test_dataset, train_dataset = train_scene(args, scene_name, batch_args.data_root)
+            if bench:
+                bench.stop()
 
             print(f'\n>>> Computing albedo rescale for {scene_name}')
+            if bench:
+                bench.start('albedo_rescale')
             rescale_value = compute_albedo_rescale(
                 tensoIR, train_dataset, batch_args.data_root, scene_name)
+            if bench:
+                bench.stop()
             trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset, rescale_value)
             del train_dataset  # free memory
         elif scene_name in trained_scenes:
@@ -747,11 +886,15 @@ def main():
                 print(f'[SKIP] No checkpoint for {scene_name} and --relight_only is set')
                 continue
             print(f'Loading checkpoint from {ckpt_path}')
+            if bench:
+                bench.start('load_checkpoint')
             ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
             kwargs = ckpt['kwargs']
             kwargs.update({'device': device})
             tensoIR = eval(args.model_name)(**kwargs)
             tensoIR.load(ckpt)
+            if bench:
+                bench.stop()
 
             DatasetClass = dataset_dict[args.dataset_name]
             train_dataset = DatasetClass(
@@ -769,8 +912,12 @@ def main():
             logfolder = f'{args.basedir}/{scene_name}'
 
             print(f'\n>>> Computing albedo rescale for {scene_name}')
+            if bench:
+                bench.start('albedo_rescale')
             rescale_value = compute_albedo_rescale(
                 tensoIR, train_dataset, batch_args.data_root, scene_name)
+            if bench:
+                bench.stop()
             trained_scenes[scene_name] = (tensoIR, logfolder, test_dataset, rescale_value)
             del train_dataset
 
@@ -787,6 +934,9 @@ def main():
         envir_light = SimpleEnvLight(envmap_rgb, env_h, env_w)
 
         relight_out = os.path.join(batch_args.output_dir, 'relight', meta_file.stem)
+
+        if bench:
+            bench.start('relight')
         relight_scene(
             tensoIR, test_dataset, envir_light, relight_out,
             target_indices=None,
@@ -795,6 +945,13 @@ def main():
             batch_size=batch_args.relight_batch_size,
             rescale_value=rescale_value,
         )
+        if bench:
+            bench.stop()
+            n_views = len(test_dataset)
+            W, H = test_dataset.img_wh
+            report_path = os.path.join(relight_out, 'benchmark.txt')
+            bench.report(scene_name, relit_scene_name, n_views, W, H, report_path)
+            return  # one scene only
 
     print('\n' + '=' * 60)
     print('All done!')
